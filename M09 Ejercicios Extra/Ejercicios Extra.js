@@ -6,6 +6,15 @@ function deObjetoAarray(objeto) {
    // Estos elementos debe ser cada par clave:valor del objeto recibido.
    // [EJEMPLO]: {D: 1, B: 2, C: 3} ---> [['D', 1], ['B', 2], ['C', 3]].
    // Tu código:
+   let arrayPadre = [];
+   
+   for(let prop in objeto){
+      let hijito = [];
+      hijito.push(prop)
+      hijito.push(objeto[prop])
+      arrayPadre.push(hijito)
+   }
+   return arrayPadre;
 }
 
 function numberOfCharacters(string) {
@@ -14,7 +23,17 @@ function numberOfCharacters(string) {
    // Las letras deben estar en orden alfabético.
    // [EJEMPLO]: "adsjfdsfsfjsdjfhacabcsbajda" ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 }
    // Tu código:
+   let obj = {}
+   for(let i = 0; i < string.length; i++){
+      if(obj.hasOwnProperty(string[i])){
+         obj[string[i]] = obj[string[i]] + 1
+      }else{
+         obj[string[i]] = 1;
+      }
+   }
+   return obj;
 }
+
 
 function capToFront(string) {
    // Recibes un string con algunas letras en mayúscula y otras en minúscula.
@@ -22,6 +41,19 @@ function capToFront(string) {
    // Retornar el string.
    // [EJEMPLO]: soyHENRY ---> HENRYsoy
    // Tu código:
+   let array1 = []
+   let array2 = []
+   for(let i = 0; i < string.length; i++){
+      if(string[i] === string[i].toUpperCase()){
+         array1.push(string[i])
+      }else{
+         array2.push(string[i])
+      }
+   }
+   let palabra = ''
+   palabra += array1.join('')
+   palabra += array2.join('')
+   return palabra;
 }
 
 function asAmirror(frase) {
@@ -29,18 +61,50 @@ function asAmirror(frase) {
    // La diferencia es que cada palabra estará escrita al inverso.
    // [EJEMPLO]: "The Henry Challenge is close!"  ---> "ehT yrneH egnellahC si !esolc"
    // Tu código:
+   let palabras = frase.split(' ')
+   let palabrasVolteadas = []
+   for(let i = 0; i < palabras.length; i++){
+      var dadaVuelta = '';
+      for(let x = 0; x < palabras[i].length; x++){
+         dadaVuelta += palabras[i][palabras[i].length - x - 1]
+      }
+      palabrasVolteadas.push(dadaVuelta)
+   }
+   let string = palabrasVolteadas.join(' ')
+   return string;
 }
 
 function capicua(numero) {
    // Si el número que recibes es capicúa debes retornar el string: "Es capicua".
    // Caso contrario: "No es capicua".
    // Tu código:
+   let stringDeNumero = numero.toString()
+   let x = 0;
+   while(x !== stringDeNumero.length){
+      if(stringDeNumero[x] !== stringDeNumero[stringDeNumero.length - x -1]){
+         return "No es capicua"
+      }
+      x++;
+   }
+   return "Es capicua"
 }
 
 function deleteAbc(string) {
    // Tu tarea es eliminar las letras "a", "b" y "c" del string recibido.
    // Retorna el string sin estas letras.
    // Tu código:
+   let arrayDeLetras = string.split('')
+   console.log(arrayDeLetras)
+   let arrayFinal = []
+   arrayDeLetras.forEach((letra) => {
+       if(letra ==="a" || letra === "b" || letra === "c"){
+
+       }else{
+         arrayFinal.push(letra)
+       }
+
+      })
+      return arrayFinal.join('')
 }
 
 function sortArray(arrayOfStrings) {
@@ -49,6 +113,17 @@ function sortArray(arrayOfStrings) {
    // de la longitud de cada string.
    // [EJEMPLO]: ["You", "are", "beautiful", "looking"]  ---> [“You", "are", "looking", "beautiful"]
    // Tu código:
+   let nuevoArray = []
+   let x = 1
+   while(x < 20){
+      for(let i = 0; i < arrayOfStrings.length ; i ++){
+         if(arrayOfStrings[i].length === x){
+          nuevoArray.push(arrayOfStrings[i])
+         }
+      }
+   x++
+   }
+   return nuevoArray
 }
 
 function buscoInterseccion(array1, array2) {
@@ -58,6 +133,11 @@ function buscoInterseccion(array1, array2) {
    // Si no tienen elementos en común, retornar un arreglo vacío.
    // [PISTA]: los arreglos no necesariamente tienen la misma longitud.
    // Tu código:
+   let nuevoArreglo = []
+   array1.forEach((num)=>{
+      if(array2.includes(num))nuevoArreglo.push(num)
+   })
+return nuevoArreglo
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
