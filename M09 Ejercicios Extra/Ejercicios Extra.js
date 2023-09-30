@@ -114,17 +114,20 @@ function sortArray(arrayOfStrings) {
    // [EJEMPLO]: ["You", "are", "beautiful", "looking"]  ---> [“You", "are", "looking", "beautiful"]
    // Tu código:
    let nuevoArray = []
-   let x = 1
-   while(x < 20){
+   let max = 0;
       for(let i = 0; i < arrayOfStrings.length ; i ++){
-         if(arrayOfStrings[i].length === x){
-          nuevoArray.push(arrayOfStrings[i])
-         }
+         if(arrayOfStrings[i].length > max) max = arrayOfStrings[i].length
       }
-   x++
+      let y = 0;
+      while(y <= max){
+      for(let x = 0; x < arrayOfStrings.length; x++){
+         if(arrayOfStrings[x].length === y) nuevoArray.push(arrayOfStrings[x])
+      }
+   y++
    }
    return nuevoArray
 }
+console.log(sortArray(["You", "are", "beautiful", "looking"]))
 
 function buscoInterseccion(array1, array2) {
    // Recibes dos arreglos de números.
